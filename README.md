@@ -10,12 +10,12 @@ You can change profile in pom.xml
 
 # profiles
 
-1. local (for local deployment with h2 database)
+## 1. local (for local deployment with h2 database)
 - in pom.xml set true to local profile
 
 (by default local deployment uses 8090 localhost, but you can change it in application-local.properties)
 
-2. local-complete (with postgresql database)
+## 2. local-complete (with postgresql database)
 - in pom.xml set true to local-complete profile
 - in command line set (form hello-app folder): 
 ```
@@ -28,7 +28,7 @@ $ docker-compose up
 ```
 (it composes two images: hello-app and postgresql)
 
-3. hosted (with hana database)
+## 3. hosted (with hana database)
 - in pom.xml set true to hosted profile
 in command line set (form hello-app folder): 
 ```
