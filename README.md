@@ -37,7 +37,7 @@ $ cf create-service  hana  hdi-shared  hana-db
 $
 $ cf bind-service hello-app hana-db
 $
-$ cf csk hana_db hanaKey
+$ cf csk hana-db hanaKey
 $
 $ java -jar hello-app-01.jar --spring.profiles.active=hosted
 $
