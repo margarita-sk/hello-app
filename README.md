@@ -37,4 +37,3 @@ $ java -jar hello-app-01.jar --spring.profiles.active=hosted --spring.datasource
 $ 
 $ cf deploy
 ```
-

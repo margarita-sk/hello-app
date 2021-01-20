@@ -6,167 +6,89 @@
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>2.4.1</version>
-        <relativePath/> <!-- lookup parent from repository -->
+        <relativePath/>
     </parent>
     <groupId>com.example</groupId>
     <artifactId>hello-app</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>01</version>
     <name>hello-app</name>
     <description>Demo project for Spring Boot</description>
-
     <properties>
-        <java.version>11</java.version>
-
-        <springVersion>2.4.1</springVersion>
-        <log4jVersion>1.2.17</log4jVersion>
-        <liquibaseVersion>4.2.2</liquibaseVersion>
-
-        <springCloudVersion>1.2.2.RELEASE</springCloudVersion>
-        <hanaCloudVersion>1.0.4.RELEASE</hanaCloudVersion>
-
-        <postgresqlVersion>42.2.18</postgresqlVersion>
-        <h2Version>1.4.200</h2Version>
-        <hanaVersion>2.7.9</hanaVersion>
+        <java-version>11</java-version>
+        <spring-version>2.4.1</spring-version>
+        <log4j-version>1.2.17</log4j-version>
+        <liquibase-version>4.2.2</liquibase-version>
+        <springCloud-version>1.2.2.RELEASE</springCloud-version>
+        <hanaCloud-version>1.0.4.RELEASE</hanaCloud-version>
+        <postgresql-version>42.2.18</postgresql-version>
+        <h2-version>1.4.200</h2-version>
+        <hana-version>2.7.9</hana-version>
+        <checkstyle-maven-plugin.version>3.1.1</checkstyle-maven-plugin.version>
     </properties>
-
     <dependencies>
-
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <optional>true</optional>
         </dependency>
-
         <dependency>
             <groupId>log4j</groupId>
             <artifactId>log4j</artifactId>
-            <version>${log4jVersion}</version>
+            <version>${log4j-version}</version>
         </dependency>
-
         <dependency>
             <groupId>org.liquibase</groupId>
             <artifactId>liquibase-core</artifactId>
-            <version>${liquibaseVersion}</version>
+            <version>${liquibase-version}</version>
         </dependency>
-
         <dependency>
             <groupId>org.liquibase</groupId>
             <artifactId>liquibase-maven-plugin</artifactId>
-            <version>${liquibaseVersion}</version>
+            <version>${liquibase-version}</version>
         </dependency>
-
-
         <!-- Spring dependencies -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
-            <version>${springVersion}</version>
+            <version>${spring-version}</version>
         </dependency>
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
-
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-tomcat</artifactId>
-            <scope>provided</scope>
-        </dependency>
-
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-cloudfoundry-connector</artifactId>
-            <version>${springCloudVersion}</version>
+            <version>${springCloud-version}</version>
             <scope>runtime</scope>
         </dependency>
         <dependency>
             <groupId>com.sap.hana.cloud</groupId>
             <artifactId>spring-cloud-cloudfoundry-hana-service-connector</artifactId>
-            <version>${hanaCloudVersion}</version>
+            <version>${hanaCloud-version}</version>
         </dependency>
-
-
-        <!-- DB connection dependencies -->
+        <!--   DB connection dependencies -->
         <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
-            <version>${postgresqlVersion}</version>
+            <version>${postgresql-version}</version>
         </dependency>
-
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
-            <version>${h2Version}</version>
+            <version>${h2-version}</version>
         </dependency>
-
         <dependency>
             <groupId>com.sap.cloud.db.jdbc</groupId>
             <artifactId>ngdbc</artifactId>
-            <version>${hanaVersion}</version>
+            <version>${hana-version}</version>
         </dependency>
-
     </dependencies>
-
-    <profiles>
-        <profile>
-            <id>local</id>
-            <activation>
-                <activeByDefault>true</activeByDefault>
-            </activation>
-            <properties>
-                <activatedProperties>local</activatedProperties>
-            </properties>
-            <dependencies>
-                <dependency>
-                    <groupId>com.h2database</groupId>
-                    <artifactId>h2</artifactId>
-                    <scope>runtime</scope>
-                </dependency>
-            </dependencies>
-        </profile>
-
-        <profile>
-            <id>local-complete</id>
-            <activation>
-                <activeByDefault>false</activeByDefault>
-            </activation>
-            <properties>
-                <activatedProperties>local-complete</activatedProperties>
-            </properties>
-            <dependencies>
-                <dependency>
-                    <groupId>org.postgresql</groupId>
-                    <artifactId>postgresql</artifactId>
-                </dependency>
-            </dependencies>
-        </profile>
-
-        <profile>
-            <id>hosted</id>
-            <activation>
-                <activeByDefault>false</activeByDefault>
-            </activation>
-            <properties>
-                <activatedProperties>hosted</activatedProperties>
-            </properties>
-            <dependencies>
-                <dependency>
-                    <groupId>com.sap.cloud.db.jdbc</groupId>
-                    <artifactId>ngdbc</artifactId>
-                    <version>2.7.9</version>
-                </dependency>
-            </dependencies>
-        </profile>
-    </profiles>
-
-
     <build>
         <plugins>
             <plugin>
@@ -178,27 +100,39 @@
                     </image>
                 </configuration>
             </plugin>
-
             <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
                 <configuration>
-                    <excludes>
-                        <exclude>
-                            <groupId>org.projectlombok</groupId>
-                            <artifactId>lombok</artifactId>
-                        </exclude>
-                    </excludes>
+                    <source>10</source>
+                    <target>10</target>
                 </configuration>
             </plugin>
-
             <plugin>
-                <groupId>org.liquibase</groupId>
-                <artifactId>liquibase-maven-plugin</artifactId>
-                <version>${liquibaseVersion}</version>
-                <configuration>
-                    <propertyFile>src/main/resources/liquibase.properties</propertyFile>
-                </configuration>
+                <groupId>com.theoryinpractise</groupId>
+                <artifactId>googleformatter-maven-plugin</artifactId>
+                <version>1.7.3</version>
+                <executions>
+                    <execution>
+                        <id>reformat-sources</id>
+                        <goals>
+                            <goal>format</goal>
+                        </goals>
+                        <phase>process-sources</phase>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-checkstyle-plugin</artifactId>
+                <version>${checkstyle-maven-plugin.version}</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>check</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>

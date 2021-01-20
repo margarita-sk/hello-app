@@ -1,0 +1,36 @@
+databaseChangeLog:
+
+  - changeSet:
+      id: 2
+      author: marharyta
+      changes:
+        - insert:
+            tableName: messages
+            columns:
+              - column:
+                  name: text
+                  value: "Hello"
+        - insert:
+            tableName: messages
+            columns:
+              - column:
+                  name: text
+                  value: "Bonjour"
+        - insert:
+            tableName: messages
+            columns:
+              - column:
+                  name: text
+                  value: "Aloha"
+        - insert:
+            tableName: messages
+            columns:
+              - column:
+                  name: text
+                  value: "Shalom"
+        - insert:
+            tableName: messages
+            columns:
+              - column:
+                  name: text
+                  value: "Guten Tag"

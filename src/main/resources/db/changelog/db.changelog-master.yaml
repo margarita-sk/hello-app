@@ -1,5 +1,9 @@
 databaseChangeLog:
        - include:
-           file: /db/changelog/001-schema-messages.sql
+           file: db/changelog/create-messages.yaml
+
+       - include:
+           file: db/changelog/insert-messages.yaml
+
 
 
