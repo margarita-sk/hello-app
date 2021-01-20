@@ -31,9 +31,15 @@ $ docker-compose up
 
 ## 3. hosted (with hana database)
 ```
-$ mbt build
+$ mvn clean install 
 $
-$ java -jar hello-app-01.jar --spring.profiles.active=hosted --spring.datasource.url=%URL% --spring.datasource.username=%USERNAME% --spring.datasource.password=%PASS%
-$ 
-$ cf deploy
+$ cf create-service  hana  hdi-shared  hana-db
+$
+$ cf bind-service hello-app hana-db
+$
+$ cf csk hana_db hanaKey
+$
+$ java -jar hello-app-01.jar --spring.profiles.active=hosted
+$
+$ cf push
 ```
