@@ -35,6 +35,8 @@ $ mvn clean install
 $
 $ cf create-service  hana  hdi-shared  hana-db
 $
+$ cf push
+$
 $ cf bind-service hello-app hana-db
 $
 $ cf csk hana-db hanaKey
