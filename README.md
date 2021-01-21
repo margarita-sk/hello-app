@@ -37,6 +37,8 @@ $
 $ cf push
 $
 $ cf bind-service hello-app hana-db
+cf csk hana-db hanaKey
+cf service-key hana-db hanaKey
 $
 $ cf push
 ```
