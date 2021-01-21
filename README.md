@@ -19,7 +19,6 @@ $ java -jar hello-app-01.jar --spring.profiles.active=local
 ## 2. local-complete (with postgresql database)
 ```
 $ mvnw clean package
-$
 ```
 - copy compiled jar to main/src/docker folder
 - in command line set (form docker folder): 
@@ -38,10 +37,6 @@ $
 $ cf push
 $
 $ cf bind-service hello-app hana-db
-$
-$ cf csk hana-db hanaKey
-$
-$ java -jar hello-app-01.jar --spring.profiles.active=hosted
 $
 $ cf push
 ```
