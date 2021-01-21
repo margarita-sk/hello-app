@@ -10,8 +10,8 @@ There are three profiles in the application, thus you can deploy it localy with 
 
 ## 1. local (for local deployment with h2 database)
 ```
-$ mvn clean instull
-$
+$ mvn clean install -P with-liquibase
+$ cd target
 $ java -jar hello-app-01.jar --spring.profiles.active=local
 ```
 (by default local deployment uses 8090 localhost, but you can change it in application-local.properties)
