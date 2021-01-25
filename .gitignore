@@ -1,0 +1,16 @@
+HELP.md
+target/
+/.mvn/
+/.idea/
+/mta_archives/
+/target/
+mvnw
+.cmd
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+
+

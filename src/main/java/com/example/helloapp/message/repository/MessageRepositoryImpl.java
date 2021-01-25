@@ -1,28 +1,31 @@
 package com.example.helloapp.message.repository;
 
-import com.example.helloapp.message.exception.MessageNotFoundException;
 import com.example.helloapp.message.model.Message;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
-import java.util.List;
-import java.util.Optional;
+import java.util.Collection;
 
 @Repository
+@AllArgsConstructor
 public class MessageRepositoryImpl implements MessageRepository {
 
-  private EntityManager entityManager;
+  private final EntityManager entityManager;
 
-  public MessageRepositoryImpl(EntityManager entityManager) {
-    this.entityManager = entityManager;
-  }
-
+  @Override
   public Message findById(Integer id) {
-    var message = Optional.of(entityManager.find(Message.class, id));
-    return message.orElseThrow(MessageNotFoundException::new);
+    var message = entityManager.find(Message.class, id);
+    return message;
   }
 
-  public List<Message> findAll() {
-    return entityManager.createQuery("select message from Message message").getResultList();
+  @Override
+  public Collection<Message> findAll() {
+    var criteriaBuilder = entityManager.getCriteriaBuilder();
+    var criteriaQuery = criteriaBuilder.createQuery(Message.class);
+    var root = criteriaQuery.from(Message.class);
+    var typedQuery = entityManager.createQuery(criteriaQuery);
+    var messages = typedQuery.getResultList();
+    return messages;
   }
 }

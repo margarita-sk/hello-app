@@ -13,6 +13,7 @@
     <version>01</version>
     <name>hello-app</name>
     <description>Demo project for Spring Boot</description>
+
     <properties>
         <java-version>11</java-version>
         <spring-version>2.4.1</spring-version>
@@ -20,22 +21,16 @@
         <liquibase-version>4.2.2</liquibase-version>
         <springCloud-version>1.2.2.RELEASE</springCloud-version>
         <hanaCloud-version>1.0.4.RELEASE</hanaCloud-version>
+
         <postgresql-version>42.2.18</postgresql-version>
         <h2-version>1.4.200</h2-version>
         <hana-version>2.7.9</hana-version>
+
+        <googleformatter-maven-plugin.version>1.7.3</googleformatter-maven-plugin.version>
         <checkstyle-maven-plugin.version>3.1.1</checkstyle-maven-plugin.version>
     </properties>
     <dependencies>
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <optional>true</optional>
-        </dependency>
-        <dependency>
-            <groupId>log4j</groupId>
-            <artifactId>log4j</artifactId>
-            <version>${log4j-version}</version>
-        </dependency>
+
         <dependency>
             <groupId>org.liquibase</groupId>
             <artifactId>liquibase-core</artifactId>
@@ -46,7 +41,18 @@
             <artifactId>liquibase-maven-plugin</artifactId>
             <version>${liquibase-version}</version>
         </dependency>
-        <!-- Spring dependencies -->
+
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+            <version>${log4j-version}</version>
+        </dependency>
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
@@ -89,6 +95,7 @@
             <version>${hana-version}</version>
         </dependency>
     </dependencies>
+
     <build>
         <plugins>
             <plugin>
@@ -100,6 +107,7 @@
                     </image>
                 </configuration>
             </plugin>
+
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -108,13 +116,17 @@
                     <target>10</target>
                 </configuration>
             </plugin>
+
             <plugin>
                 <groupId>com.theoryinpractise</groupId>
                 <artifactId>googleformatter-maven-plugin</artifactId>
-                <version>1.7.3</version>
+                <version>${googleformatter-maven-plugin.version}</version>
                 <executions>
                     <execution>
                         <id>reformat-sources</id>
+                        <configuration>
+                            <style>GOOGLE</style>
+                        </configuration>
                         <goals>
                             <goal>format</goal>
                         </goals>
@@ -122,18 +134,28 @@
                     </execution>
                 </executions>
             </plugin>
+
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-checkstyle-plugin</artifactId>
                 <version>${checkstyle-maven-plugin.version}</version>
+                <configuration>
+                    <configLocation>google_checks.xml</configLocation>
+                    <configLocation>sun_checks.xml</configLocation>
+                    <violationSeverity>warning</violationSeverity>
+                    <includeTestSourceDirectory>true</includeTestSourceDirectory>
+                </configuration>
                 <executions>
                     <execution>
+                        <id>check-style</id>
                         <goals>
                             <goal>check</goal>
                         </goals>
                     </execution>
                 </executions>
             </plugin>
+
+
         </plugins>
     </build>
 </project>

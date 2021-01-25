@@ -10,11 +10,13 @@ import javax.persistence.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "messages")
+@Table(name = "MESSAGE")
 public class Message {
 
-  @Id private int id;
+  @Id
+  @Column(name = "ID", unique = true)
+  private int id;
 
-  @Column(name = "text", unique = true)
+  @Column(name = "TEXT")
   private String text;
 }

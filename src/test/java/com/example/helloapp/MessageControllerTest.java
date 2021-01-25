@@ -2,6 +2,7 @@ package com.example.helloapp;
 
 import com.example.helloapp.message.controller.MessageController;
 import com.example.helloapp.message.model.Message;
+import lombok.AllArgsConstructor;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

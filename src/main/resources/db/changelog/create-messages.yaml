@@ -4,15 +4,15 @@ databaseChangeLog:
       author: marharyta
       changes:
         - createTable:
-            tableName: messages
+            tableName: MESSAGE
             columns:
               - column:
-                  name: id
+                  name: ID
                   type: int
                   autoIncrement: true
                   constraints:
                     - primaryKey: true
                     - nullable: false
               - column:
-                  name: text
+                  name: TEXT
                   type: varchar(250)

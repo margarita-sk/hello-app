@@ -8,20 +8,37 @@ modules:
     path: /
     deployed-after:
       - hana-db
+      - dyn-dep
     parameters:
-      memory: 1024M
+      memory: 1G
+      buildpack: https://github.com/cloudfoundry/java-buildpack#v4.35
     build-parameters:
-      buildpack: sap_java_buildpack
+      buildpack: https://github.com/cloudfoundry/java-buildpack#v4.35
       build-result: '/target/*.jar'
     properties:
       TARGET_RUNTIME: main
+      JBP_CONFIG_OPEN_JDK_JRE: '{ jre: { version: 11.+ }}'
       SPRING_PROFILES_ACTIVE: hosted
+      SPRING_LIQUIBASE_ENABLED: false
     requires:
       - name: hana-db
 
+  - name: dyn-dep
+    type: com.sap.xs.hdi
+    path: db
+    deployed-after:
+      - hana-db
+    parameters:
+      memory: 512M
+      disk-quota: 512M
+    requires:
+      - name: hana-db
+    provides:
+      - name: db_deployment
+
 resources:
-    - name: hana-db
-      type: com.sap.xs.hdi-container
-      parameters:
-        service: hanatrial
-        service-plan: hdi-shared
+  - name: hana-db
+    type: com.sap.xs.hdi-container
+    parameters:
+      service: hanatrial
+      service-plan: hdi-shared

@@ -14,6 +14,7 @@ services:
       - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/compose-postgres
       - SPRING_DATASOURCE_USERNAME=compose-postgres
       - SPRING_DATASOURCE_PASSWORD=compose-postgres
+      - SPRING_PROFILES_ACTIVE=local-complete
 
   db:
     image: 'postgres:13.1-alpine'

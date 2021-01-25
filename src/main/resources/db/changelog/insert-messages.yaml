@@ -5,32 +5,32 @@ databaseChangeLog:
       author: marharyta
       changes:
         - insert:
-            tableName: messages
+            tableName: MESSAGE
             columns:
               - column:
-                  name: text
+                  name: TEXT
                   value: "Hello"
         - insert:
-            tableName: messages
+            tableName: MESSAGE
             columns:
               - column:
-                  name: text
+                  name: TEXT
                   value: "Bonjour"
         - insert:
-            tableName: messages
+            tableName: MESSAGE
             columns:
               - column:
-                  name: text
+                  name: TEXT
                   value: "Aloha"
         - insert:
-            tableName: messages
+            tableName: MESSAGE
             columns:
               - column:
-                  name: text
+                  name: TEXT
                   value: "Shalom"
         - insert:
-            tableName: messages
+            tableName: MESSAGE
             columns:
               - column:
-                  name: text
+                  name: TEXT
                   value: "Guten Tag"

@@ -7,9 +7,9 @@ import java.util.Collection;
 
 public interface MessageService {
 
-  Message receiveMessageById(int id) throws MessageNotFoundException;
+  Message receiveMessageById(int id);
 
-  Message receiveRandomMessage() throws MessageNotFoundException;
+  Message receiveRandomMessage();
 
   Collection<Message> receiveAll();
 }

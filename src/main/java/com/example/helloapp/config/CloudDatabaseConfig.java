@@ -22,7 +22,7 @@ public class CloudDatabaseConfig extends AbstractCloudConfig {
 
     return DataSourceBuilder.create()
         .type(HikariDataSource.class)
-        .driverClassName(com.sap.db.jdbc.Driver.getDriverName())
+        .driverClassName(com.sap.db.jdbc.Driver.class.getName())
         .url(url)
         .username(user)
         .password(password)

@@ -1,0 +1,22 @@
+{
+	"format_version": 1,
+	"imports": [{
+		"column_mappings": {
+			"ID": "ID",
+			"TEXT": "TEXT"
+		},
+		"import_settings": {
+			"import_columns": [
+				"ID",
+				"TEXT"
+			],
+			"include_filter": []
+		},
+		"source_data": {
+			"data_type": "CSV",
+			"file_name": "message.csv",
+			"has_header": true
+		},
+		"target_table": "MESSAGE"
+	}]
+}
