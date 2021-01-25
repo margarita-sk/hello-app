@@ -7,6 +7,9 @@ target/
 mvnw
 .cmd
 
+/package-lock.json
+/node_modules
+
 ### IntelliJ IDEA ###
 .idea
 *.iws
