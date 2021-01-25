@@ -12,11 +12,6 @@ There are three profiles in the application, thus you can deploy it localy with 
 ### For docker container deploynment:
 - Docker version 20.10.2
 ### For cloud foundry deploynment:
-- Apache Maven 3.6.3 
-- Java version: 11.0.9
-### For docker container deploynment: 
-- Docker version 20.10.2 
-### For cloud foundry deploynment: 
 - Cloud foundry client version 7.2.0
 - Node.js 6.14.10
 - Also you need to have SAP Cloud Platform account with subaccount and space on it (it may be trial)
