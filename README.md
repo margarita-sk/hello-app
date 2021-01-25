@@ -42,15 +42,11 @@ $ docker-compose up
 
 ## 3. hosted (with hana database)
 ```
-
-$
 $ cf create-service  hana  hdi-shared  hana-db
 $ cf csk hana-db hanaKey
 $ cf service-key hana-db hanaKey
-$
+
 $ mbt build
-$
 $ cd mta_archives
 $ cf deploy spring-boot-hana-db-app_1.3.10.mtar
-$
 ```
