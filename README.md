@@ -31,11 +31,6 @@ $ java -jar hello-app-01.jar --spring.profiles.active=local
 
 Requirements
 ```
-$ mvnw clean package
-```
-- copy compiled jar to main/src/docker folder
-- in command line set (form docker folder):
-```
 $ docker-compose up
 ```
 (by default local deployment uses 8080 localhost, but you can change it in application-local.properties)
