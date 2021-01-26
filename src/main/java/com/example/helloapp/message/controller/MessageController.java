@@ -5,15 +5,10 @@ import com.example.helloapp.message.service.MessageService;
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.ArrayList;
 import java.util.Collection;
-import java.util.List;
-import java.util.stream.Collectors;
 
 @AllArgsConstructor
 @Log4j

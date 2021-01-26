@@ -8,6 +8,7 @@
         <version>2.4.1</version>
         <relativePath/>
     </parent>
+
     <groupId>com.example</groupId>
     <artifactId>hello-app</artifactId>
     <version>01</version>
@@ -97,15 +98,11 @@
     </dependencies>
 
     <build>
+        <defaultGoal>package</defaultGoal>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-                <configuration>
-                    <image>
-                        <name>docker/${project.artifactId}:v1</name>
-                    </image>
-                </configuration>
             </plugin>
 
             <plugin>
