@@ -14,7 +14,7 @@ import java.util.stream.Collectors;
 
 @AllArgsConstructor
 @Service
-public class MessageServiceImplTwo implements MessageService {
+public class MessageServiceImpl implements MessageService {
 
   private final MessageRepository repository;
 
@@ -31,13 +31,12 @@ public class MessageServiceImplTwo implements MessageService {
     if (size <= 0) {
       throw new MessageNotFoundException();
     }
-    return messages.get(ThreadLocalRandom.current().nextInt(size));
+    var randomMessageNumber = ThreadLocalRandom.current().nextInt(size);
+    return messages.get(randomMessageNumber);
   }
 
   @Override
   public Collection<Message> receiveAll() {
-    var messages = new ArrayList<Message>();
-    repository.findAll().forEach(messages::add);
-    return messages;
+    return repository.findAll();
   }
 }

@@ -1,19 +1,12 @@
-HELP.md
-target/
-/.mvn/
-/.idea/
-/mta_archives/
-/target/
-mvnw
-.cmd
+/*
+!db
+!docker
+!src
+!mta.yaml
+!pom.xml
+!README.md
 
-/package-lock.json
-/node_modules
-
-### IntelliJ IDEA ###
-.idea
-*.iws
-*.iml
-*.ipr
+db/package-lock.json
+docker/.idea
 
 
