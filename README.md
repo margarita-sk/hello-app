@@ -29,7 +29,6 @@ $ java -jar hello-app-01.jar --spring.profiles.active=local
 
 ## 2. local-complete (with postgresql database)
 
-Requirements
 ```
 $ docker-compose up
 ```
