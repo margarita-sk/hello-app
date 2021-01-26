@@ -5,8 +5,9 @@
 !mta.yaml
 !pom.xml
 !README.md
+!Dockerfile
+!docker-compose.yml
 
 db/package-lock.json
-docker/.idea
 
 
