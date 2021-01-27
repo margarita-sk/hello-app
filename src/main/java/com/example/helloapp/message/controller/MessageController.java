@@ -1,25 +1,26 @@
+/** (C)2021 */
 package com.example.helloapp.message.controller;
 
 import com.example.helloapp.message.model.Message;
 import com.example.helloapp.message.service.MessageService;
+import java.util.Collection;
+import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
-
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.util.Collection;
 
 @AllArgsConstructor
 @Log4j
 @RestController
 public class MessageController {
 
+  /** MessageService bean. */
   private final MessageService service;
 
   @GetMapping("/")
-  public String[] startPage() {
-    var requests = new String[] {"/sayHello", "/getAll"};
+  public List<String> startPage() {
+    var requests = List.of("/sayHello", "/getAll");
     return requests;
   }
 

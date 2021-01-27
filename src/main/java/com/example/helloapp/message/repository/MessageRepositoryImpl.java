@@ -1,11 +1,11 @@
+/** (C)2021 */
 package com.example.helloapp.message.repository;
 
 import com.example.helloapp.message.model.Message;
+import java.util.Collection;
+import javax.persistence.EntityManager;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Repository;
-
-import javax.persistence.EntityManager;
-import java.util.Collection;
 
 @Repository
 @AllArgsConstructor
@@ -14,7 +14,7 @@ public class MessageRepositoryImpl implements MessageRepository {
   private final EntityManager entityManager;
 
   @Override
-  public Message findById(Integer id) {
+  public Message findById(final Integer id) {
     var message = entityManager.find(Message.class, id);
     return message;
   }

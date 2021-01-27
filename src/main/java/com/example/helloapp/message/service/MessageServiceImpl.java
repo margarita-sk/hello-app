@@ -1,16 +1,14 @@
+/** (C)2021 */
 package com.example.helloapp.message.service;
 
 import com.example.helloapp.message.exception.MessageNotFoundException;
 import com.example.helloapp.message.model.Message;
 import com.example.helloapp.message.repository.MessageRepository;
-import lombok.AllArgsConstructor;
-import org.springframework.stereotype.Service;
-
-import java.util.ArrayList;
 import java.util.Collection;
-import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.stream.Collectors;
+import lombok.AllArgsConstructor;
+import org.springframework.stereotype.Service;
 
 @AllArgsConstructor
 @Service
@@ -19,7 +17,7 @@ public class MessageServiceImpl implements MessageService {
   private final MessageRepository repository;
 
   @Override
-  public Message receiveMessageById(int id) {
+  public Message receiveMessageById(final int id) {
     var message = repository.findById(id);
     return message;
   }

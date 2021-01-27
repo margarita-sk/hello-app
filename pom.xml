@@ -13,45 +13,46 @@
     <artifactId>hello-app</artifactId>
     <version>01</version>
     <name>hello-app</name>
-    <description>Demo project for Spring Boot</description>
+    <description>Spring Boot project</description>
 
     <properties>
-        <java-version>11</java-version>
-        <spring-version>2.4.1</spring-version>
-        <log4j-version>1.2.17</log4j-version>
-        <liquibase-version>4.2.2</liquibase-version>
-        <springCloud-version>1.2.2.RELEASE</springCloud-version>
-        <hanaCloud-version>1.0.4.RELEASE</hanaCloud-version>
+        <java.version>11</java.version>
+        <spring.version>2.4.1</spring.version>
+        <log4j.version>1.2.17</log4j.version>
+        <liquibase.version>4.2.2</liquibase.version>
+        <springCloud.version>1.2.2.RELEASE</springCloud.version>
+        <hanaCloud.version>1.0.4.RELEASE</hanaCloud.version>
 
-        <postgresql-version>42.2.18</postgresql-version>
-        <h2-version>1.4.200</h2-version>
-        <hana-version>2.7.9</hana-version>
+        <postgresql.version>42.2.18</postgresql.version>
+        <h2.version>1.4.200</h2.version>
+        <hana.version>2.7.9</hana.version>
 
         <googleformatter-maven-plugin.version>1.7.3</googleformatter-maven-plugin.version>
         <checkstyle-maven-plugin.version>3.1.1</checkstyle-maven-plugin.version>
+        <spotless-maven-plugin.version>2.7.0</spotless-maven-plugin.version>
     </properties>
     <dependencies>
 
         <dependency>
             <groupId>org.liquibase</groupId>
             <artifactId>liquibase-core</artifactId>
-            <version>${liquibase-version}</version>
+            <version>${liquibase.version}</version>
         </dependency>
         <dependency>
             <groupId>org.liquibase</groupId>
             <artifactId>liquibase-maven-plugin</artifactId>
-            <version>${liquibase-version}</version>
+            <version>${liquibase.version}</version>
         </dependency>
 
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <optional>true</optional>
+            <version>${lombok.version}</version>
         </dependency>
         <dependency>
             <groupId>log4j</groupId>
             <artifactId>log4j</artifactId>
-            <version>${log4j-version}</version>
+            <version>${log4j.version}</version>
         </dependency>
 
         <dependency>
@@ -61,7 +62,7 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
-            <version>${spring-version}</version>
+            <version>${spring.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -71,34 +72,37 @@
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-cloudfoundry-connector</artifactId>
-            <version>${springCloud-version}</version>
+            <version>${springCloud.version}</version>
             <scope>runtime</scope>
         </dependency>
         <dependency>
             <groupId>com.sap.hana.cloud</groupId>
             <artifactId>spring-cloud-cloudfoundry-hana-service-connector</artifactId>
-            <version>${hanaCloud-version}</version>
+            <version>${hanaCloud.version}</version>
         </dependency>
+
         <!--   DB connection dependencies -->
         <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
-            <version>${postgresql-version}</version>
+            <version>${postgresql.version}</version>
         </dependency>
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
-            <version>${h2-version}</version>
+            <version>${h2.version}</version>
         </dependency>
         <dependency>
             <groupId>com.sap.cloud.db.jdbc</groupId>
             <artifactId>ngdbc</artifactId>
-            <version>${hana-version}</version>
+            <version>${hana.version}</version>
         </dependency>
+
     </dependencies>
 
     <build>
         <defaultGoal>package</defaultGoal>
+
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
@@ -113,21 +117,28 @@
                     <target>10</target>
                 </configuration>
             </plugin>
-
             <plugin>
-                <groupId>com.theoryinpractise</groupId>
-                <artifactId>googleformatter-maven-plugin</artifactId>
-                <version>${googleformatter-maven-plugin.version}</version>
+                <groupId>com.diffplug.spotless</groupId>
+                <artifactId>spotless-maven-plugin</artifactId>
+                <version>${spotless-maven-plugin.version}</version>
+                <configuration>
+                    <java>
+                        <includes>
+                            <include>src/main/java/**/*.java</include>
+                            <include>src/test/java/**/*.java</include>
+                        </includes>
+                        <googleJavaFormat>
+                            <style>GOOGLE</style>
+                        </googleJavaFormat>
+                    </java>
+                </configuration>
                 <executions>
                     <execution>
-                        <id>reformat-sources</id>
-                        <configuration>
-                            <style>GOOGLE</style>
-                        </configuration>
+                        <phase>compile</phase>
+                        <id>google-check-style</id>
                         <goals>
-                            <goal>format</goal>
+                            <goal>check</goal>
                         </goals>
-                        <phase>process-sources</phase>
                     </execution>
                 </executions>
             </plugin>
@@ -137,12 +148,13 @@
                 <artifactId>maven-checkstyle-plugin</artifactId>
                 <version>${checkstyle-maven-plugin.version}</version>
                 <configuration>
-                    <configLocation>sun_checks.xml</configLocation>
+                    <configLocation>src/main/resources/checkstyle/custom_checks.xml</configLocation>
                     <violationSeverity>warning</violationSeverity>
                     <includeTestSourceDirectory>true</includeTestSourceDirectory>
                 </configuration>
                 <executions>
                     <execution>
+                        <phase>compile</phase>
                         <id>check-style</id>
                         <goals>
                             <goal>check</goal>
@@ -150,7 +162,6 @@
                     </execution>
                 </executions>
             </plugin>
-
 
         </plugins>
     </build>
