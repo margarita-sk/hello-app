@@ -10,8 +10,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 
 /**
- * This class allows to parse credentials from cloud platform and puts it into spring's datasource
- * class.
+ * This class allows to parse credentials from cloud platform.
  *
  * @author marharyta skokava
  */
