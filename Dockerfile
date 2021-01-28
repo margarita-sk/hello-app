@@ -1,5 +1,6 @@
 FROM maven:3.6.3-openjdk-11 AS maven
-COPY . .
+COPY /pom.xml ./pom.xml
+COPY /src/ ./src/
 RUN mvn clean package
 
 FROM adoptopenjdk/openjdk15-openj9:jre-15.0.1_9_openj9-0.23.0-alpine
