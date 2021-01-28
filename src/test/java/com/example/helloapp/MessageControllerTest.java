@@ -13,7 +13,8 @@ import org.springframework.test.context.ActiveProfiles;
 @SpringBootTest
 public class MessageControllerTest {
 
-  @Autowired private MessageController controller;
+  @Autowired
+  private MessageController controller;
 
   @Test
   public void contextLoads() {
