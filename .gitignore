@@ -1,5 +1,4 @@
 /*
-!db
 !docker
 !src
 !mta.yaml
@@ -7,7 +6,7 @@
 !README.md
 !Dockerfile
 !docker-compose.yml
-
-db/package-lock.json
+!db/src
+!db/package.json
 
 
