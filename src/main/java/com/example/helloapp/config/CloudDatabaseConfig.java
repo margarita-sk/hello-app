@@ -18,14 +18,6 @@ import org.springframework.context.annotation.Profile;
 @Profile("hosted")
 public class CloudDatabaseConfig extends AbstractCloudConfig {
 
-  /**
-   * This creates DataSource bean parsed credentials from cloud platform.
-   *
-   * @param url
-   * @param user
-   * @param password
-   * @return dataSource bean
-   */
   @Bean
   public static DataSource dataSource(
       @Value("${hana.url}") final String url,

@@ -7,11 +7,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class HelloAppApplication {
 
-  /**
-   * Main spring boot application method.
-   *
-   * @param args
-   */
   public static void main(final String[] args) {
     SpringApplication.run(HelloAppApplication.class, args);
   }
