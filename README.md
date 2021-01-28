@@ -44,3 +44,6 @@ $ mbt build
 $ cd mta_archives
 $ cf deploy spring-boot-hana-db-app_1.3.10.mtar
 ```
+
+- csk - is a short command for create-service-key : cf create-service-key SERVICE_INSTANCE SERVICE_KEY
+- to retrieve credentials for a service key, was used the command : cf service-key MY-SERVICE MY-KEY 
