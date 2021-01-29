@@ -28,8 +28,9 @@ $ java -jar hello-app-01.jar --spring.profiles.active=local
 (by default local deployment uses 8090 localhost, but you can change it in application-local.properties)
 
 ## 2. local-complete (with postgresql database)
-
+Spring buildpack plugin is used for building image of app
 ```
+$ mvn spring-boot:build-image
 $ docker-compose up
 ```
 (by default local deployment uses 8080 localhost, but you can change it in application-local.properties)
