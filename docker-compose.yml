@@ -2,10 +2,9 @@ version: '3'
 
 services:
   app:
-    image: 'hello-app-image'
+    image: 'hello-app-img'
     build:
       context: ""
-#      target: maven
     container_name: app
     ports:
       - "8080:8080"
