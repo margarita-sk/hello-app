@@ -114,7 +114,6 @@
                     <image>
                         <name>hello-app-img</name>
                     </image>
-
                 </configuration>
             </plugin>
 
